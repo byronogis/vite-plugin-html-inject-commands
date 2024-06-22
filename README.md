@@ -69,7 +69,7 @@ export default defineConfig({
 })
 ```
 
-## Configuration
+## Type Declarations
 
 <!-- automd:file src="./src/type.ts" code lang="ts" -->
 
