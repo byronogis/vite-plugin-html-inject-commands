@@ -12,7 +12,7 @@
 
 Inject commands result into index.html meta tag.
 
-## Install
+## Installation
 
 <!-- automd:pm-install dev -->
 
@@ -46,10 +46,21 @@ export default defineConfig({
   plugins: [
     HTMLInjectCommands({
       commands: [
-        // eg: inject git commit hash and date to meta tag under head
+        /**
+         * Example: inject git commit hash and date to meta tag under head
+         * Result into head: `<meta name="git:commit" content="hash=123456, date=2021-09-01T00:00:00+00:00">`
+         */
         {
           name: 'git:commit',
           command: 'git log -1 --format="hash=%h, date=%aI"',
+        },
+        /**
+         * Example: a mistask command that will fail
+         * Result into head: `<meta name="git:commit" content="Failed to get commit info">`
+         */
+        {
+          name: 'git:commit',
+          command: 'gitt log -1 --format="hash=%h, date=%aI"',
           errorMsg: 'Failed to get commit info',
         },
       ],
@@ -57,6 +68,37 @@ export default defineConfig({
   ],
 })
 ```
+
+## Configuration
+
+<!-- automd:file src="./src/type.ts" code lang="ts" -->
+
+```ts [type.ts]
+export interface Options {
+  /**
+   * List of commands to be executed
+   */
+  commands: Command[]
+}
+
+export interface Command {
+  /**
+   * Which will be used to name attribute of the meta tag
+   */
+  name: string
+  /**
+   * Command to be executed
+   * The result of the command will be injected into content attribute of the meta tag
+   */
+  command: string
+  /**
+   * Replease the content of the meta tag when the command fails
+   */
+  errorMsg?: string
+}
+```
+
+<!-- /automd -->
 
 <!-- automd:fetch url="gh:byronogis/.github/main/snippets/readme-contrib-node-pnpm.md" -->
 
