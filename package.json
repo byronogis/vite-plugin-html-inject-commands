@@ -1,19 +1,24 @@
 {
-  "name": "pkg-placeholder",
+  "name": "vite-plugin-html-inject-commands",
   "type": "module",
   "version": "0.0.0",
   "packageManager": "pnpm@9.1.1",
-  "description": "_description_",
+  "description": "Inject commands result into index.html meta tag.",
   "author": "Byron < byronogis@outlook.com>",
   "license": "MIT",
   "funding": "https://github.com/sponsors/byronogis",
-  "homepage": "https://github.com/byronogis/pkg-placeholder#readme",
+  "homepage": "https://github.com/byronogis/vite-plugin-html-inject-commands#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/byronogis/pkg-placeholder.git"
+    "url": "git+https://github.com/byronogis/vite-plugin-html-inject-commands.git"
   },
-  "bugs": "https://github.com/byronogis/pkg-placeholder/issues",
-  "keywords": [],
+  "bugs": "https://github.com/byronogis/vite-plugin-html-inject-commands/issues",
+  "keywords": [
+    "vite-plugin",
+    "html",
+    "inject",
+    "command"
+  ],
   "sideEffects": false,
   "exports": {
     ".": {
@@ -40,18 +45,23 @@
     "build": "unbuild",
     "dev": "unbuild --stub",
     "lint": "eslint .",
-    "prepublishOnly": "nr build",
+    "prepublishOnly": "automd && nr build",
     "release": "bumpp && npm publish",
     "start": "esno src/index.ts",
     "test": "vitest",
     "typecheck": "tsc --noEmit",
+    "automd": "automd README.md",
     "prepare": "simple-git-hooks"
+  },
+  "peerDependencies": {
+    "vite": "^5.0.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.18.1",
     "@antfu/ni": "^0.21.12",
     "@antfu/utils": "^0.7.8",
     "@types/node": "^20.12.12",
+    "automd": "^0.3.7",
     "bumpp": "^9.4.1",
     "eslint": "^9.3.0",
     "esno": "^4.7.0",
