@@ -1,0 +1,58 @@
+{
+  "name": "vite-plugin-html-inject-commands",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "Inject commands result into index.html meta tag.",
+  "author": "Byron <byronogis@outlook.com>",
+  "license": "MIT",
+  "funding": "https://github.com/sponsors/byronogis",
+  "homepage": "https://github.com/byronogis/vite-plugin-html-inject-commands#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/byronogis/vite-plugin-html-inject-commands.git"
+  },
+  "bugs": "https://github.com/byronogis/vite-plugin-html-inject-commands/issues",
+  "keywords": [
+    "vite-plugin",
+    "html",
+    "inject",
+    "command"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./dist/index.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "unbuild --stub",
+    "build": "unbuild",
+    "automd": "automd README.md",
+    "prepublishOnly": "pnpm run build",
+    "release": "npm publish",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest"
+  },
+  "peerDependencies": {
+    "vite": "^5.0.0 || ^6.0.0"
+  },
+  "devDependencies": {
+    "vite": "catalog:"
+  }
+}

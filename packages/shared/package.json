@@ -1,0 +1,5 @@
+{
+  "name": "@monorepo/shared",
+  "type": "module",
+  "private": true
+}

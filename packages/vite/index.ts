@@ -1,15 +1,14 @@
-import { exec } from 'node:child_process'
 import type { HtmlTagDescriptor, Plugin } from 'vite'
-import type { Options } from './type'
+import type { Options } from '../shared'
+import { exec } from 'node:child_process'
 
-export default function htmlInjectCommands(options: Options): Plugin {
-  if (!options || !Array.isArray(options.commands))
-    throw new Error('Invalid options')
-
+export default function htmlInjectCommands(options?: Options): Plugin {
   return {
     name: 'vite-plugin-html-inject-commands',
     transformIndexHtml(_html) {
-      const commands = options.commands
+      const {
+        commands = [],
+      } = options ?? {}
 
       const getMetaTag = (name: string, content: string): HtmlTagDescriptor => ({
         tag: 'meta',

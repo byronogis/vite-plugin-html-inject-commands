@@ -1,78 +1,38 @@
 {
-  "name": "vite-plugin-html-inject-commands",
+  "name": "html-inject-commands",
   "type": "module",
   "version": "0.0.1",
-  "packageManager": "pnpm@9.1.1",
+  "private": true,
+  "packageManager": "pnpm@9.15.2",
   "description": "Inject commands result into index.html meta tag.",
-  "author": "Byron < byronogis@outlook.com>",
-  "license": "MIT",
-  "funding": "https://github.com/sponsors/byronogis",
-  "homepage": "https://github.com/byronogis/vite-plugin-html-inject-commands#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/byronogis/vite-plugin-html-inject-commands.git"
-  },
-  "bugs": "https://github.com/byronogis/vite-plugin-html-inject-commands/issues",
-  "keywords": [
-    "vite-plugin",
-    "html",
-    "inject",
-    "command"
-  ],
-  "sideEffects": false,
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
-    }
-  },
-  "main": "./dist/index.mjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
-  "typesVersions": {
-    "*": {
-      "*": [
-        "./dist/*",
-        "./dist/index.d.ts"
-      ]
-    }
-  },
-  "files": [
-    "dist"
-  ],
   "scripts": {
-    "build": "unbuild",
-    "dev": "unbuild --stub",
-    "lint": "eslint .",
-    "prepublishOnly": "automd && nr build",
-    "release": "bumpp && npm publish",
-    "start": "esno src/index.ts",
-    "test": "vitest",
-    "typecheck": "tsc --noEmit",
-    "automd": "automd README.md",
-    "prepare": "simple-git-hooks"
-  },
-  "peerDependencies": {
-    "vite": "^5.0.0"
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "automd": "turbo run automd && pnpm run root:automd",
+    "root:automd": "automd README.md",
+    "release": "bumpp -r && pnpm run -r release",
+    "typecheck": "turbo run typecheck",
+    "root:lint": "eslint .",
+    "root:lint:fix": "eslint . --fix",
+    "clear": "npx turbo run clear && rimraf **/node_modules **/.turbo",
+    "prepare": "simple-git-hooks",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.18.1",
-    "@antfu/ni": "^0.21.12",
-    "@antfu/utils": "^0.7.8",
-    "@types/node": "^20.12.12",
-    "automd": "^0.3.7",
-    "bumpp": "^9.4.1",
-    "eslint": "^9.3.0",
-    "esno": "^4.7.0",
-    "lint-staged": "^15.2.2",
-    "pnpm": "^9.1.1",
-    "rimraf": "^5.0.7",
-    "simple-git-hooks": "^2.11.1",
-    "typescript": "^5.4.5",
-    "unbuild": "^2.0.0",
-    "vite": "^5.2.11",
-    "vitest": "^1.6.0"
+    "@antfu/eslint-config": "catalog:",
+    "@types/node": "catalog:",
+    "@vitest/coverage-v8": "catalog:",
+    "automd": "catalog:",
+    "bumpp": "catalog:",
+    "eslint": "catalog:",
+    "jiti": "catalog:",
+    "lint-staged": "catalog:",
+    "rimraf": "catalog:",
+    "simple-git-hooks": "catalog:",
+    "turbo": "latest",
+    "typescript": "catalog:",
+    "unbuild": "catalog:",
+    "vitest": "catalog:"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"
