@@ -33,10 +33,10 @@ Made by [@byronogis](https://github.com/byronogis) and [community](https://githu
 
 <!-- /automd -->
 
-<!-- automd:with-automd -->
+<!-- automd:with-automd lastUpdate -->
 
 ---
 
-_🤖 auto updated with [automd](https://automd.unjs.io)_
+_🤖 auto updated with [automd](https://automd.unjs.io) (last updated: Mon Dec 30 2024)_
 
 <!-- /automd -->
