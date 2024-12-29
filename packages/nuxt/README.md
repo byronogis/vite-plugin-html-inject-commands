@@ -1,10 +1,10 @@
-# vite-plugin-html-inject-commands
+# nuxt-html-inject-commands
 
 <!-- automd:badges color="yellow" license codecov bundlephobia packagephobia -->
 
-[![npm version](https://img.shields.io/npm/v/vite-plugin-html-inject-commands?color=yellow)](https://npmjs.com/package/vite-plugin-html-inject-commands)
-[![npm downloads](https://img.shields.io/npm/dm/vite-plugin-html-inject-commands?color=yellow)](https://npm.chart.dev/vite-plugin-html-inject-commands)
-[![bundle size](https://img.shields.io/bundlephobia/minzip/vite-plugin-html-inject-commands?color=yellow)](https://bundlephobia.com/package/vite-plugin-html-inject-commands)
+[![npm version](https://img.shields.io/npm/v/nuxt-html-inject-commands?color=yellow)](https://npmjs.com/package/nuxt-html-inject-commands)
+[![npm downloads](https://img.shields.io/npm/dm/nuxt-html-inject-commands?color=yellow)](https://npm.chart.dev/nuxt-html-inject-commands)
+[![bundle size](https://img.shields.io/bundlephobia/minzip/nuxt-html-inject-commands?color=yellow)](https://bundlephobia.com/package/nuxt-html-inject-commands)
 [![codecov](https://img.shields.io/codecov/c/gh/byronogis/vite-plugin-html-inject-commands?color=yellow)](https://codecov.io/gh/byronogis/vite-plugin-html-inject-commands)
 [![license](https://img.shields.io/github/license/byronogis/vite-plugin-html-inject-commands?color=yellow)](https://github.com/byronogis/vite-plugin-html-inject-commands/blob/main/LICENSE)
 
@@ -18,22 +18,22 @@ Inject commands result into index.html meta tag.
 
 ```sh
 # ✨ Auto-detect
-npx nypm install -D vite-plugin-html-inject-commands
+npx nypm install -D nuxt-html-inject-commands
 
 # npm
-npm install -D vite-plugin-html-inject-commands
+npm install -D nuxt-html-inject-commands
 
 # yarn
-yarn add -D vite-plugin-html-inject-commands
+yarn add -D nuxt-html-inject-commands
 
 # pnpm
-pnpm install -D vite-plugin-html-inject-commands
+pnpm install -D nuxt-html-inject-commands
 
 # bun
-bun install -D vite-plugin-html-inject-commands
+bun install -D nuxt-html-inject-commands
 
 # deno
-deno install --dev vite-plugin-html-inject-commands
+deno install --dev nuxt-html-inject-commands
 ```
 
 <!-- /automd -->
@@ -42,33 +42,26 @@ deno install --dev vite-plugin-html-inject-commands
 
 ```ts
 // vite.config.ts
-import { defineConfig } from 'vite'
-import HTMLInjectCommands from 'vite-plugin-html-inject-commands'
-
-export default defineConfig({
-  plugins: [
-    HTMLInjectCommands({
-      commands: [
-        /**
-         * Example: inject git commit hash and date to meta tag under head
-         * Result into head: `<meta name="git:commit" content="hash=123456, date=2021-09-01T00:00:00+00:00">`
-         */
-        {
-          name: 'git:commit',
-          command: 'git log -1 --format="hash=%h, date=%aI"',
-        },
-        /**
-         * Example: a mistask command that will fail
-         * Result into head: `<meta name="git:commit" content="Failed to get commit info">`
-         */
-        {
-          name: 'git:commit',
-          command: 'gitt log -1 --format="hash=%h, date=%aI"',
-          errorMsg: 'Failed to get commit info',
-        },
-      ],
-    }),
-  ],
+export default defineNuxtConfig({
+  modules: ['nuxt-html-inject-commands'],
+  htmlInjectCommands: {
+    commands: [
+      {
+        name: 'git:commit',
+        command: 'git log -1 --format="hash=%h, date=%aI"',
+        errorMsg: 'Failed to get git commit hash',
+      },
+      {
+        name: 'error:withmsg',
+        command: 'exit 1',
+        errorMsg: 'Failed to execute error command',
+      },
+      {
+        name: 'error:withoutmsg',
+        command: 'exit 1',
+      },
+    ],
+  },
 })
 ```
 

@@ -1,0 +1,58 @@
+{
+  "name": "nuxt-html-inject-commands",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "Inject commands result into index.html meta tag.",
+  "author": "Byron <byronogis@outlook.com>",
+  "license": "MIT",
+  "funding": "https://github.com/sponsors/byronogis",
+  "homepage": "https://github.com/byronogis/vite-plugin-html-inject-commands#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/byronogis/vite-plugin-html-inject-commands.git"
+  },
+  "bugs": "https://github.com/byronogis/vite-plugin-html-inject-commands/issues",
+  "keywords": [
+    "vite-plugin",
+    "html",
+    "inject",
+    "command"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/types.d.ts",
+      "import": "./dist/module.mjs",
+      "require": "./dist/module.cjs"
+    }
+  },
+  "main": "./dist/module.cjs",
+  "types": "./dist/types.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "nuxi dev playground --host",
+    "build": "nuxt-module-build build",
+    "dev:build": "nuxi build playground",
+    "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
+    "automd": "automd README.md",
+    "release": "pnpm run lint && pnpm run test && pnpm run build && npm publish",
+    "typecheck": "vue-tsc --noEmit && cd playground && vue-tsc --noEmit",
+    "clear": "rimraf **/dist **/.nuxt **/.output",
+    "postinstall": "pnpm run dev:prepare",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "@nuxt/kit": "catalog:"
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "catalog:",
+    "@nuxt/eslint-config": "catalog:",
+    "@nuxt/module-builder": "catalog:",
+    "@nuxt/schema": "catalog:",
+    "@nuxt/test-utils": "catalog:",
+    "nuxt": "catalog:",
+    "vue-tsc": "catalog:"
+  }
+}

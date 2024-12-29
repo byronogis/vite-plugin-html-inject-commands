@@ -5,6 +5,10 @@
   "private": true,
   "packageManager": "pnpm@9.15.2",
   "description": "Inject commands result into index.html meta tag.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/byronogis/vite-plugin-html-inject-commands.git"
+  },
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",
