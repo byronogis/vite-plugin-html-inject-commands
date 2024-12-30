@@ -1,7 +1,7 @@
 {
   "name": "vite-plugin-html-inject-commands",
   "type": "module",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Inject commands result into index.html meta tag.",
   "author": "Byron <byronogis@outlook.com>",
   "license": "MIT",
