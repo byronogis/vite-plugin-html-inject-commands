@@ -41,7 +41,7 @@
     "release": "pnpm publish",
     "typecheck": "vue-tsc --noEmit && cd playground && vue-tsc --noEmit",
     "clear": "rimraf **/dist **/.nuxt **/.output",
-    "postinstall": "pnpm run dev:prepare",
+    "preepare": "pnpm run dev:prepare",
     "test": "vitest"
   },
   "dependencies": {
