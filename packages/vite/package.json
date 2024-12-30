@@ -45,7 +45,7 @@
     "build": "unbuild",
     "automd": "automd README.md",
     "prepublishOnly": "pnpm run build",
-    "release": "npm publish",
+    "release": "pnpm publish",
     "typecheck": "tsc --noEmit",
     "test": "vitest"
   },

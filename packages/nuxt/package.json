@@ -38,7 +38,7 @@
     "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
     "automd": "automd README.md",
     "prepublishOnly": "pnpm run build",
-    "release": "npm publish",
+    "release": "pnpm publish",
     "typecheck": "vue-tsc --noEmit && cd playground && vue-tsc --noEmit",
     "clear": "rimraf **/dist **/.nuxt **/.output",
     "postinstall": "pnpm run dev:prepare",
